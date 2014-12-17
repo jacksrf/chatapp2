@@ -1,0 +1,122 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+#headerWrap {
+	background-color: #F7CA18;
+	height: 100px;
+	display: flex;
+	font-family: 'Muli Bold', sans-serif;
+}
+
+#h1holder {
+	margin: auto;
+}
+
+#h1holder h1 {
+	font-size: 4em;
+}
+
+#heading1 {
+	color: #446CB3;
+}
+
+#leftSide {
+	background-color: #95A5A6;
+	height: 600px;
+	width: 20%;
+	float:left;
+	border-top: 5px solid #6C7A89;
+}
+
+#textArea {
+	height: 600px;
+	width: 60%;
+	float: left;
+	overflow-y: scroll;
+}
+
+#onlineList {
+	height: 600px;
+	width: 20%;
+	float: left;
+	background-color: #95A5A6;
+	border-top: 5px solid #6C7A89;
+	font-family: 'Muli', sans-serif;
+	color: white;
+}
+
+#textBox {
+	width: 95%;
+	height:30px;
+	margin-left: 2%;
+	margin-top: 10px;
+	margin-right: 5%;
+	float: left;
+	border-radius: 5px;
+	border-color: #ABB7B7;
+	border: 2px solid #ABB7B7;
+	outline: 0;
+	display: fixed;
+}
+
+#submit {
+	visibility: hidden;
+}
+
+#h2holder {
+	display: flex;
+	height: 50px;
+}
+
+#h2 {
+	margin: auto;
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+//////////////////////////////////////
