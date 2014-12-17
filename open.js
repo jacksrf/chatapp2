@@ -5,7 +5,7 @@ var avatar = input2.value;
 var input3 = document.getElementById("color");
 var color = input3.value;
 
-var button = document.getElementById("enter");
+var enter = document.getElementById("enter");
 
 var profile = function(userName, avatar, color) {
   this.name = userName;
@@ -13,7 +13,15 @@ var profile = function(userName, avatar, color) {
   this.color = color;
 }
 
-button.addEventListener("keyup", function(evt){
-	if (evt.keyCode === 13){
-    var user = new Profile(userName, avatar, color);
-}});
+enter.addEventListener("click", function(){
+	// if (evt.keyCode === 13){
+    var login = document.getElementById("container");
+    var chat = document.getElementById("chatBody");
+    // var user = new Profile(userName, avatar, color);
+    //   console.log(user);
+
+    login.style.visibility = "hidden";
+    chat.style.visibility = "visible";
+
+// }
+});

@@ -1,9 +1,33 @@
+header {
+	font-family: 'Ubuntu', sans-serif;
+}
+
+#headerWrap {
+	background-color: #F7CA18;
+	height: 100px;
+	display: flex;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+#h1holder {
+	margin: auto;
+}
+
+#h1holder h1 {
+	font-size: 4em;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+#heading1 {
+	color: #446CB3;
+	font-family: 'Ubuntu', sans-serif;
+}
 
 div#container {
   height:600px;
   width: 100%;
   display: flex;
-  font-family: 'Muli', sans-serif;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 #signin {
@@ -63,11 +87,15 @@ p {
     opacity:.5;
     color: white;
     font-size: 1em;
-    font-family: 'Muli', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
 }
 
 #enter:hover {
   opacity: 1;
+}
+
+#enter:active {
+  
 }
 
 
