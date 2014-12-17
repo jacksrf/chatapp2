@@ -39,6 +39,33 @@ header {
 	border-top: 5px solid #6C7A89;
 }
 
+#avatarHolder {
+	height: 200px;
+	width: 100%;
+	display: flex;
+}
+
+#avatarPic {
+	margin: auto;
+	height:100px;
+	width:100px;
+	border: 3px solid #6C7A89;
+	border-radius: 5px;
+	background-size: cover;
+}
+
+#nameHolder {
+	height: 50px;
+	display: flex;
+}
+
+#nameProf {
+	color: white;
+	font-family: 'Ubuntu', sans-serif;
+	margin: auto;
+	font-size: 2em;
+}
+
 #textArea {
 	height: 600px;
 	width: 60%;

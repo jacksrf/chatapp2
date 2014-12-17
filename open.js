@@ -1,27 +1,39 @@
-var input1 = document.getElementById("userName");
-var userName = input1.value;
-var input2 = document.getElementById("avatar");
-var avatar = input2.value;
-var input3 = document.getElementById("color");
-var color = input3.value;
+// var ws = new WebSocket("ws://localhost:3000");
 
+
+var userName = document.getElementById("userName");
+var avatar = document.getElementById("avatar");
+var color = document.getElementById("color");
 var enter = document.getElementById("enter");
 
-var profile = function(userName, avatar, color) {
-  this.name = userName;
-  this.avatar = avatar;
-  this.color = color;
-}
+var user = {type: "profile", name: userName, img: avatar, color: color};
 
 enter.addEventListener("click", function(){
-	// if (evt.keyCode === 13){
     var login = document.getElementById("container");
     var chat = document.getElementById("chatBody");
-    // var user = new Profile(userName, avatar, color);
-    //   console.log(user);
+
+    var avatarHolder = document.getElementById("avatarHolder");
+    var avatarPic = document.getElementById("avatarPic");
+    var nameProf = document.getElementById("nameProf");
+    var nameHolder = document.getElementById("nameHolder");
+
+    avatarPic.style.backgroundImage = "url('" + avatar.value + "')";
+    nameProf.innerHTML = userName.value;
+    nameHolder.appendChild(nameProf);
+
 
     login.style.visibility = "hidden";
     chat.style.visibility = "visible";
 
-// }
+
+
+
 });
+
+// ws.addEventListener("open", function(evt){
+// 	console.log("Connected to server");
+// });
+//
+// ws.addEventListener("message", function(evt){
+//
+// });
