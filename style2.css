@@ -71,19 +71,21 @@ header {
 	height: 600px;
 	width: 60%;
 	float: left;
-	overflow-y: scroll;
 }
 
 /*chat area ... */
 #chatbox {
 	width: 100%;
 	height: 600px;
+	overflow-y: scroll;
 }
 
 #msgHolder {
 	width: 100%;
 	font-family: 'Ubuntu', sans-serif;
 	display: inline-block;
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
 
 #msgAvatar {
@@ -91,6 +93,8 @@ header {
 	width: 40px;
 	float: left;
 	margin-left: 3%;
+	background-size: cover;
+
 }
 
 #msgName {
@@ -98,6 +102,7 @@ header {
 	/*margin-top: 15px;*/
 	margin-left: 2%;
 	margin-right: 1%;
+	font-weight: bolder;
 }
 
 #msgTime {
@@ -110,17 +115,24 @@ header {
 	left: -5;
 	font-size: .8em;
 	color: #D2D7D3;
+}
 
+#msgTime:hover {
+	color: #ABB7B7;
 }
 
 #msg {
 	float: left;
+	width: 550px;
 	margin-top: 15px;
-	margin-left: 1%;
+	margin-left: 2%;
 	margin-right: 1%;
 	position: relative;
-	top: 7px;
-	left: -157px;
+	text-align: left;
+	top: -9px;
+	/*left: -120px;*/
+	word-wrap: break-all;
+	font-weight: 300;
 }
 
 
@@ -133,6 +145,16 @@ header {
 	font-family: 'Ubuntu', sans-serif;
 	color: white;
 	text-shadow: black 0 2px;
+}
+
+#loggedList {
+	margin: auto;
+	width: 100px;
+}
+
+#loggedList li {
+	padding-top: 4px;
+	padding-bottom: 4px;
 }
 
 #textBox {
@@ -194,7 +216,7 @@ div#container {
 }
 
 
-input {
+.loginInputs {
   width: 60%;
   margin-top: 10px;
   text-align: center;
@@ -225,7 +247,7 @@ p {
     border-radius: 5px;
     border: 5px solid 96281B;
     background-color: #F22613;
-    opacity:.5;
+    opacity: .5;
     color: white;
     font-size: 1em;
     font-family: 'Ubuntu', sans-serif;
