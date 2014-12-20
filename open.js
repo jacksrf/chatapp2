@@ -5,7 +5,11 @@ var avatar = document.getElementById("avatar");
 var color = document.getElementById("color");
 var enter = document.getElementById("enter");
 
+var currentUserName = "";
+
 var user = {type: "profile", name: userName, img: avatar, color: color};
+
+
 
 ws.addEventListener("open", function(evt){
 	console.log("Connected to server");
@@ -41,12 +45,15 @@ enter.addEventListener("click", function(){
     msgHolder.appendChild(msg);
 
      var send_obj = new buildSendObj("msg", userName.value);
-	   console.log(send_obj);
+	  //  console.log(send_obj);
 		  // send_obj.changeColor();
   	 var j_send_obj = JSON.stringify(send_obj);
-     console.log(j_send_obj);
+    //  console.log(j_send_obj);
   	 ws.send(j_send_obj);
 
+
+     currentUserName = userName.value;
+     console.log(currentUserName);
 
 
     login.style.visibility = "hidden";
@@ -69,7 +76,7 @@ ws.addEventListener("open", function(evt){
 ws.addEventListener("message", function(evt){
 	var msg_obj = JSON.parse(evt.data);
 	var type = msg_obj.type;
-	console.log(msg_obj);
+	// console.log(msg_obj);
 	if(type === "msg"){
 		chatMessages(msg_obj);
 	}else if(type === "add_chat"){
@@ -211,9 +218,11 @@ var count = 0;
 //on or off line chat notice
 var onlineMsg = function(message_obj){
 	var name = message_obj.name;
+  console.log(name);
+if (name !== currentUserName) {
 	if( message_obj.type === "add_msg"){
 		var inner = name + " has entered the chat";
-	}else{
+	}else if (message_obj.type === "off_msg"){
 		var inner = name + " has left the chat";
 	}
 
@@ -247,6 +256,7 @@ var onlineMsg = function(message_obj){
     var first = chatbox.firstChild;
     chatbox.insertBefore(msgHolder, first);
   }
+}
 	// if(count % 2 === 0){
 	// 	li.setAttribute("class","even");
 	// }else{
@@ -263,9 +273,52 @@ var chatMessages = function(message_obj){
 	var name = message_obj.name
 	var message = message_obj.msg;
   var url = message_obj.url;
-	console.log(message);
-  console.log(url);
 
+
+  // var split = message.split(" ");
+	// split.forEach(function(elem){
+		var l = message.length;
+		var last3 = message.charAt(l-3) + message.charAt(l-2) + message.charAt(l-1);
+		if(last3 === "png" || last3 === "bmp" || last3 === "jpg" || last3 === "gif"){
+			var timeStamp = moment().format('h:mm a');
+      var chatbox = document.getElementById("chatbox");
+      var textBox = document.getElementById("textBox")
+      var msgHolder = document.createElement("span");
+      var msgAvatar = document.createElement("img");
+      var msgName = document.createElement("p");
+      var msgTime = document.createElement("p");
+      var msg = document.createElement("p");
+      var userName = document.getElementById("userName");
+      var avatar = document.getElementById("avatar");
+      var color = document.getElementById("color");
+      var img = document.createElement("img");
+
+       msgHolder.setAttribute("id","msgHolder");
+      chatbox.appendChild(msgHolder);
+       msgAvatar.style.backgroundImage = "url('" + url + "')";
+       msgAvatar.setAttribute("id","msgAvatar");
+      msgHolder.appendChild(msgAvatar);
+       msgName.innerHTML = name;
+       msgName.setAttribute("id","msgName");
+      msgHolder.appendChild(msgName);
+       msgTime.innerHTML = timeStamp;
+       msgTime.setAttribute("id","msgTime");
+      msgHolder.appendChild(msgTime);
+      //  msg.innerHTML = message;
+       msg.setAttribute("id","msg");
+      msgHolder.appendChild(msg);
+      img.setAttribute("src", elem);
+			// img.setAttribute("width", "100%");
+      img.setAttribute("width", "300px");
+			// img.setAttribute("max-height", "500");
+			msg.appendChild(img);
+
+      var first = chatbox.firstChild;
+      chatbox.insertBefore(msgHolder, first);
+	} else {
+
+	if (message_obj.whisper){
+		messagePost =" Private Message: " + message;
     var timeStamp = moment().format('h:mm a');
     var chatbox = document.getElementById("chatbox");
     var textBox = document.getElementById("textBox")
@@ -289,6 +342,38 @@ var chatMessages = function(message_obj){
      msgTime.innerHTML = timeStamp;
      msgTime.setAttribute("id","msgTime");
     msgHolder.appendChild(msgTime);
+     msg.innerHTML = messagePost;
+     msg.setAttribute("id","msg");
+    msgHolder.appendChild(msg);
+
+    var first = chatbox.firstChild;
+    chatbox.insertBefore(msgHolder, first);
+
+  } else {
+    var timeStamp = moment().format('h:mm a');
+    var chatbox = document.getElementById("chatbox");
+    var textBox = document.getElementById("textBox")
+    var msgHolder = document.createElement("span");
+    var msgAvatar = document.createElement("img");
+    var msgName = document.createElement("p");
+    var msgTime = document.createElement("p");
+    var msg = document.createElement("p");
+    var userName = document.getElementById("userName");
+    var avatar = document.getElementById("avatar");
+    var color = document.getElementById("color");
+
+
+     msgHolder.setAttribute("id","msgHolder");
+    chatbox.appendChild(msgHolder);
+     msgAvatar.style.backgroundImage = "url('" + url + "')";
+     msgAvatar.setAttribute("id","msgAvatar");
+    msgHolder.appendChild(msgAvatar);
+     msgName.innerHTML = name;
+     msgName.setAttribute("id","msgName");
+    msgHolder.appendChild(msgName);
+     msgTime.innerHTML = timeStamp;
+     msgTime.setAttribute("id","msgTime");
+    msgHolder.appendChild(msgTime);
      msg.innerHTML = message;
      msg.setAttribute("id","msg");
     msgHolder.appendChild(msg);
@@ -296,6 +381,9 @@ var chatMessages = function(message_obj){
     var first = chatbox.firstChild;
     chatbox.insertBefore(msgHolder, first);
   }
+  // })
+  }
+}
 
 	// console.log(message_obj.url)
 	// console.log(url);
@@ -352,14 +440,14 @@ var chatMessages = function(message_obj){
   textBox.addEventListener("keyup", function(evt){
 	    if (evt.keyCode === 13){
      var send_obj = new buildSendObj("msg", textBox.value, avatar.value);
-	   console.log(send_obj);
-	  //  var new_msg = send_obj.isWhisper(textBox.value);
+
+	   var new_msg = send_obj.isWhisper(textBox.value);
     //  send_obj.isYell(new_msg);
 		//   send_obj.tableFlip();
 		  // send_obj.changeColor();
 
   		var j_send_obj = JSON.stringify(send_obj);
-    	console.log(j_send_obj);
+    	// console.log(j_send_obj);
   		ws.send(j_send_obj);
   		textBox.value = "";
   }});
@@ -380,6 +468,7 @@ var buildSendObj = function(type, message, url){
 			new_msg = split.join(" ");
 			this.message = new_msg;
 			return new_msg;
+      // console.log("here   " + new_msg);
 			// can handle detection if the person exists here
 		};
 		return input;
@@ -391,7 +480,7 @@ var buildSendObj = function(type, message, url){
 			split.splice(0,1);
 			var new_msg = split.join(" ");
 			new_msg = new_msg.toUpperCase();
-			console.log(new_msg);
+			// console.log(new_msg);
 			this.message = new_msg;
 		}
 	};

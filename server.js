@@ -12,26 +12,22 @@ server.on("connection", function(connection){
 		var message_obj = JSON.parse(j_message_obj);
 		var message = message_obj.message;
 		var url = message_obj.url;
-		console.log(url);
+
 		if (!user.bannedWords(user, message, banned_words)){
 			// sets the user names
 			if(user.hasName === false){
 				user.comeOnline(userDb, message, chatHistory, user, url);
 			// accepts and sends messenges
 			}else {
-				if(message_obj.type === "color"){
-					user.color = message;
-					var server_msg = {type:"server", msg: "You have changed your font color to " + message};
-					var j_server_msg = JSON.stringify(server_msg);
-					user.client.send(j_server_msg);
-				} else if(message_obj.type === "listImage"){
-					user.listImage = message;
-					var server_msg = {type:"server", msg: "You have changed your avatar"};
-					var j_server_msg = JSON.stringify(server_msg);
-					user.client.send(j_server_msg);
-				}else{
+				// if(message_obj.type === "color"){
+				// 	user.color = message;
+				// 	var server_msg = {type:"server", msg: "You have changed your font color to " + message};
+				// 	var j_server_msg = JSON.stringify(server_msg);
+				// 	user.client.send(j_server_msg);
+				// }else{
+				console.log(url);
 					user.sendMsg(userDb, message_obj, user, url);
-				}
+				// }
 			}
 		}
 	});
@@ -44,6 +40,7 @@ server.on("connection", function(connection){
 var jsonifyMsg = function(name1, msg1, wh, name2, color,url){
 	var obj = {type:"msg", name:name1, msg:msg1, whisper: wh, sender:name2, color:color, url:url};
 	var j_obj = JSON.stringify(obj);
+	console.log(obj);
 	return j_obj;
 
 }
@@ -92,7 +89,7 @@ var User = function(connObj){
 	this.comeOnline = function(userDb, name, chatHistory, user, url){
 		this.name = name.trim();
 		this.url = url;
-		console.log(this.url);
+		// console.log(this.url);
 		userDb.forEach(function(users){
 			var add = {type:"add_chat", name:users.name};
 			var j_add = JSON.stringify(add);
@@ -131,7 +128,7 @@ var User = function(connObj){
 		});
 	}
 
-	this.sendMsg = function(userDb, message_obj, user, url){
+	this.sendMsg = function(userDb, message_obj, user,url){
 		var message = message_obj.message;
 		if(message_obj.whisper){
 			var j_w_msg = jsonifyMsg(user.name, message_obj.message, true, "", this.color, url);
@@ -147,6 +144,7 @@ var User = function(connObj){
 			});
 		}else{
 			var reg_msg = jsonifyMsg(user.name, message, false, "", this.color, url);
+			console.log("here  " + reg_msg)
 			userDb.forEach(function(other_users){
 				//if(other_users.name != user.name){
 					other_users.client.send(reg_msg);

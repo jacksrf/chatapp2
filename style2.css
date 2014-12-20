@@ -4,6 +4,7 @@
 */
 header {
 	font-family: 'Ubuntu', sans-serif;
+
 }
 
 #headerWrap {
@@ -11,6 +12,7 @@ header {
 	height: 100px;
 	display: flex;
 	font-family: 'Ubuntu', sans-serif;
+	/*box-shadow: 0 5px 5px -3px black;*/
 }
 
 #h1holder {
@@ -33,7 +35,7 @@ header {
 
 #leftSide {
 	background-color: #95A5A6;
-	height: 600px;
+	height: 650px;
 	width: 20%;
 	float:left;
 	border-top: 5px solid #6C7A89;
@@ -68,7 +70,7 @@ header {
 }
 
 #textArea {
-	height: 600px;
+	height: 650px;
 	width: 60%;
 	float: left;
 }
@@ -135,9 +137,27 @@ header {
 	font-weight: 300;
 }
 
+/*@media only screen
+and (min-width : 1224px) {
+
+{
+		float: left;
+		width: 550px;
+		margin-top: 15px;
+		margin-left: 2%;
+		margin-right: 1%;
+		position: relative;
+		text-align: left;
+		top: -9px;
+		left: -180px;
+		word-wrap: break-all;
+		font-weight: 300;
+  }
+}*/
+
 
 #onlineList {
-	height: 600px;
+	height: 650px;
 	width: 20%;
 	float: left;
 	background-color: #95A5A6;
@@ -160,6 +180,7 @@ header {
 #textBox {
 	width: 95%;
 	height:30px;
+	padding-left: 10px;
 	margin-left: 2%;
 	margin-top: 10px;
 	margin-right: 5%;
