@@ -1,4 +1,4 @@
-var ws = new WebSocket("ws://trey.princesspeach.nyc:3000");
+var ws = new WebSocket("ws://localhost:3000");
 
 var userName = document.getElementById("userName");
 var avatar = document.getElementById("avatar");
@@ -307,7 +307,7 @@ var chatMessages = function(message_obj){
       //  msg.innerHTML = message;
        msg.setAttribute("id","msg");
       msgHolder.appendChild(msg);
-      img.setAttribute("src", elem);
+      img.setAttribute("src", message);
 			// img.setAttribute("width", "100%");
       img.setAttribute("width", "300px");
 			// img.setAttribute("max-height", "500");
