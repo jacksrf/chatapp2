@@ -1,4 +1,4 @@
-var ws = new WebSocket("ws://localhost:3000");
+var ws = new WebSocket("ws://trey@princesspeach.nyc");
 
 var userName = document.getElementById("userName");
 var avatar = document.getElementById("avatar");
