@@ -1,4 +1,4 @@
-var ws = new WebSocket("ws://trey.princesspeach.nyc:3000");
+var ws = new WebSocket("ws://localhost:3000");
 
 var userName = document.getElementById("userName");
 var avatar = document.getElementById("avatar");
@@ -26,7 +26,7 @@ enter.addEventListener("click", function(){
 
     if (avatar.value === ""){
       avatarPic.style.backgroundImage = "url(htmltag.png)";
-      avatarPic.style.backgroundColor = "#F4D03F";
+      avatarPic.style.backgroundColor = "#05EDFF";
     } else {
       avatarPic.style.backgroundImage = "url('" + avatar.value + "')";
     }
