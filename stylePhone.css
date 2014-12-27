@@ -6,6 +6,7 @@ font-family: 'Oswald', sans-serif;
 	background-color: black;
 	height: 75px;
 	display: flex;
+	-webkit-display: flex;
 	font-family: 'Oswald', sans-serif;
 	/*box-shadow: 0 5px 5px -3px black;*/
 }
@@ -13,6 +14,7 @@ font-family: 'Oswald', sans-serif;
 #menu {
 	position: absolute;
 	display: flex;
+	-webkit-display: flex;
 	width: 75px;
 	height: 75px;
 	visibility: hidden;
@@ -70,6 +72,7 @@ font-family: 'Oswald', sans-serif;
 	height: 150px;
 	width: 100%;
 	display: flex;
+	-webkit-display: flex;
 }
 
 #avatarPic {
@@ -84,6 +87,7 @@ font-family: 'Oswald', sans-serif;
 #nameHolder {
 	height: 50px;
 	display: flex;
+	-webkit-display: flex;
 }
 
 #nameProf {
@@ -209,6 +213,7 @@ font-family: 'Oswald', sans-serif;
 
 #h2holder {
 	display: flex;
+	-webkit-display: flex;
 	height: 50px;
 }
 
@@ -221,6 +226,7 @@ div#container {
   height:100%;
   width: 100%;
   display: flex;
+	-webkit-display: flex;
   font-family: 'Oswald', sans-serif;
 	visibility: visible;
 	color: #05EDFF;
@@ -239,6 +245,7 @@ div#container {
   width: 100%;
   height: 100px;
   display: flex;
+	-webkit-display: flex;
 }
 
 .inputCenter {
