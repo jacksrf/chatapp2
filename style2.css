@@ -9,16 +9,22 @@ font-family: 'Oswald', sans-serif;
 #headerWrap {
 	background-color: black;
 	height: 100px;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
 	display: flex;
-	-webkit-display: flex;
 	font-family: 'Oswald', sans-serif;
 	/*box-shadow: 0 5px 5px -3px black;*/
 }
 
 #menu {
 	position: absolute;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
 	display: flex;
-	-webkit-display: flex;
 	width: 75px;
 	height: 75px;
 	visibility: hidden;
@@ -65,8 +71,11 @@ font-family: 'Oswald', sans-serif;
 #avatarHolder {
 	height: 150px;
 	width: 100%;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
 	display: flex;
-	-webkit-display: flex;
 }
 
 #avatarPic {
@@ -80,6 +89,10 @@ font-family: 'Oswald', sans-serif;
 
 #nameHolder {
 	height: 50px;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
 	display: flex;
 }
 
@@ -223,8 +236,11 @@ font-family: 'Oswald', sans-serif;
 }
 
 #h2holder {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
 	display: flex;
-	-webkit-display: flex;
 	height: 50px;
 }
 
@@ -236,8 +252,11 @@ div#container {
 	position: absolute;
   height:600px;
   width: 100%;
-  display: flex;
-	-webkit-display: flex;
+  display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
   font-family: 'Oswald', sans-serif;
 	visibility: visible;
 	color: #05EDFF;
@@ -255,8 +274,11 @@ div#container {
 .inputHolder {
   width: 100%;
   height: 100px;
-  display: flex;
-	-webkit-display: flex;
+  display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
 }
 
 .inputCenter {
