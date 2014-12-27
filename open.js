@@ -1,4 +1,4 @@
-var ws = new WebSocket("ws://trey.princesspeach.nyc:3000");
+var ws = new WebSocket("ws://localhost:3000");
 
 var userName = document.getElementById("userName");
 var avatar = document.getElementById("avatar");
@@ -88,77 +88,13 @@ ws.addEventListener("message", function(evt){
 	}else if(type === "ban" || type === "server"){
 		serverMsg(msg_obj);
 	}
-// });
-
-// var serverMessageHolder = function(message) {
-//   var timeStamp = moment().format('h:mm a');
-//   var chatbox = document.getElementById("chatbox");
-//   var textBox = document.getElementById("textBox")
-//   var msgHolder = document.createElement("span");
-//   var msgAvatar = document.createElement("img");
-//   var msgName = document.createElement("p");
-//   var msgTime = document.createElement("p");
-//   var msg = document.createElement("p");
-//   var userName = document.getElementById("userName");
-//   var avatar = document.getElementById("avatar");
-//   var color = document.getElementById("color");
-//
-//    msgHolder.setAttribute("id","msgHolder");
-//   chatbox.appendChild(msgHolder);
-//    msgAvatar.style.backgroundImage = "url('" + avatar.value + "')";
-//    msgAvatar.setAttribute("id","msgAvatar");
-//   msgHolder.appendChild(msgAvatar);
-//    msgName.innerHTML = userName.value;
-//    msgName.setAttribute("id","msgName");
-//   msgHolder.appendChild(msgName);
-//    msgTime.innerHTML = timeStamp;
-//    msgTime.setAttribute("id","msgTime");
-//   msgHolder.appendChild(msgTime);
-//    msg.innerHTML = message;
-//    msg.setAttribute("id","msg");
-//   msgHolder.appendChild(msg);
-//
-//   var first = chatbox.firstChild;
-//   chatbox.insertBefore(msgHolder, first);
-// }
-//
-//
-// var userMessageHolder = function(name, message) {
-//   var timeStamp = moment().format('h:mm a');
-//   var chatbox = document.getElementById("chatbox");
-//   var textBox = document.getElementById("textBox")
-//   var msgHolder = document.createElement("span");
-//   var msgAvatar = document.createElement("img");
-//   var msgName = document.createElement("p");
-//   var msgTime = document.createElement("p");
-//   var msg = document.createElement("p");
-//   var userName = document.getElementById("userName");
-//   var avatar = document.getElementById("avatar");
-//   var color = document.getElementById("color");
-//
-//    msgHolder.setAttribute("id","msgHolder");
-//   chatbox.appendChild(msgHolder);
-//    msgAvatar.style.backgroundImage = "url('" + avatar.value + "')";
-//    msgAvatar.setAttribute("id","msgAvatar");
-//   msgHolder.appendChild(msgAvatar);
-//    msgName.innerHTML = name;
-//    msgName.setAttribute("id","msgName");
-//   msgHolder.appendChild(msgName);
-//    msgTime.innerHTML = timeStamp;
-//    msgTime.setAttribute("id","msgTime");
-//   msgHolder.appendChild(msgTime);
-//    msg.innerHTML = message;
-//    msg.setAttribute("id","msg");
-//   msgHolder.appendChild(msg);
-//
-//   var first = chatbox.firstChild;
-//   chatbox.insertBefore(msgHolder, first);
-// }
 
 });
 
 //message coming from server (admin,online,offline,ban)
 var serverMsg = function(message_obj){
+	console.log("ban message");
+
 	var inner = message_obj.msg;
 
     var timeStamp = moment().format('h:mm a');
@@ -178,7 +114,7 @@ var serverMsg = function(message_obj){
      msgAvatar.style.backgroundImage = "url('robot.png')";
      msgAvatar.setAttribute("id","msgAvatar");
     msgHolder.appendChild(msgAvatar);
-     msgName.innerHTML = ChatterBot;
+     msgName.innerHTML = "ChatterBot";
      msgName.setAttribute("id","msgName");
     msgHolder.appendChild(msgName);
      msgTime.innerHTML = timeStamp;
@@ -271,15 +207,145 @@ if (name !== currentUserName) {
 //
 var chatMessages = function(message_obj){
 	var name = message_obj.name
-	var message = message_obj.msg;
+	var incomingMessage = message_obj.msg;
   var url = message_obj.url;
+	var artMessage = "";
+
+	var split = incomingMessage.split(" ");
+	for (i=0; i<split.length; i++) {
+		if (split[i] === "Sniper" && split[i+1] === "Rifle") {
+		 var change = split.splice(i, 1, '︻デ┳═ー');
+		 artMessage = change.join(",");
+		}
+	}
+
+	if (artMessage === "") {
+		var message = incomingMessage;
+	} else {
+		var message = artMessage;
+	}
 
 
   // var split = message.split(" ");
 	// split.forEach(function(elem){
-		var l = message.length;
-		var last3 = message.charAt(l-3) + message.charAt(l-2) + message.charAt(l-1);
-		if(last3 === "png" || last3 === "bmp" || last3 === "jpg" || last3 === "gif"){
+		var l = incomingMessage.length;
+		var last3 = incomingMessage.charAt(l-3) + incomingMessage.charAt(l-2) + incomingMessage.charAt(l-1);
+		var first4 = incomingMessage.charAt(0) + incomingMessage.charAt(1) + incomingMessage.charAt(2) + incomingMessage.charAt(3);
+if (message_obj.whisper) {
+
+			if(last3 === "png" || last3 === "bmp" || last3 === "jpg" || last3 === "gif" || last3 === "peg"){
+
+				var timeStamp = moment().format('h:mm a');
+				var chatbox = document.getElementById("chatbox");
+				var textBox = document.getElementById("textBox")
+				var msgHolder = document.createElement("span");
+				var msgAvatar = document.createElement("img");
+				var msgName = document.createElement("p");
+				var msgTime = document.createElement("p");
+				var msg = document.createElement("p");
+				var userName = document.getElementById("userName");
+				var avatar = document.getElementById("avatar");
+				var color = document.getElementById("color");
+				var img = document.createElement("img");
+
+				msgHolder.setAttribute("id","msgHolder");
+				chatbox.appendChild(msgHolder);
+				msgAvatar.style.backgroundImage = "url('" + url + "')";
+				msgAvatar.setAttribute("id","msgAvatar");
+				msgHolder.appendChild(msgAvatar);
+				msgName.innerHTML = name;
+				msgName.setAttribute("id","msgName");
+				msgHolder.appendChild(msgName);
+				msgTime.innerHTML = timeStamp;
+				msgTime.setAttribute("id","msgTime");
+				msgHolder.appendChild(msgTime);
+				//  msg.innerHTML = message;
+				msg.setAttribute("id","msg");
+				msgHolder.appendChild(msg);
+				img.innerHTML = " Private Message: ";
+				img.setAttribute("src", message);
+				// img.setAttribute("width", "100%");
+				img.setAttribute("width", "300px");
+				// img.setAttribute("max-height", "500");
+				msg.appendChild(img);
+
+				var first = chatbox.firstChild;
+				chatbox.insertBefore(msgHolder, first);
+
+		} else if (first4 === "http") {
+			messagePost =" Private Message: " + message;
+
+			var timeStamp = moment().format('h:mm a');
+			var chatbox = document.getElementById("chatbox");
+			var textBox = document.getElementById("textBox")
+			var msgHolder = document.createElement("span");
+			var msgAvatar = document.createElement("img");
+			var msgName = document.createElement("p");
+			var msgTime = document.createElement("p");
+			var msg = document.createElement("p");
+			var userName = document.getElementById("userName");
+			var avatar = document.getElementById("avatar");
+			var color = document.getElementById("color");
+			var a = document.createElement("a");
+			var p = document.createElement("p");
+
+			msgHolder.setAttribute("id","msgHolder");
+			chatbox.appendChild(msgHolder);
+			msgAvatar.style.backgroundImage = "url('" + url + "')";
+			msgAvatar.setAttribute("id","msgAvatar");
+			msgHolder.appendChild(msgAvatar);
+			msgName.innerHTML = name;
+			msgName.setAttribute("id","msgName");
+			msgHolder.appendChild(msgName);
+			msgTime.innerHTML = timeStamp;
+			msgTime.setAttribute("id","msgTime");
+			msgHolder.appendChild(msgTime);
+			//  msg.innerHTML = message;
+			msg.setAttribute("id","msg");
+			msgHolder.appendChild(msg);
+			a.innerHTML = messagePost;
+			a.setAttribute("href", message);
+			msg.appendChild(a);
+
+			var first = chatbox.firstChild;
+			chatbox.insertBefore(msgHolder, first);
+
+		} else {
+
+			messagePost =" Private Message: " + message;
+			var timeStamp = moment().format('h:mm a');
+			var chatbox = document.getElementById("chatbox");
+			var textBox = document.getElementById("textBox")
+			var msgHolder = document.createElement("span");
+			var msgAvatar = document.createElement("img");
+			var msgName = document.createElement("p");
+			var msgTime = document.createElement("p");
+			var msg = document.createElement("p");
+			var userName = document.getElementById("userName");
+			var avatar = document.getElementById("avatar");
+			var color = document.getElementById("color");
+
+			msgHolder.setAttribute("id","msgHolder");
+			chatbox.appendChild(msgHolder);
+			msgAvatar.style.backgroundImage = "url('" + url + "')";
+			msgAvatar.setAttribute("id","msgAvatar");
+			msgHolder.appendChild(msgAvatar);
+			msgName.innerHTML = name;
+			msgName.setAttribute("id","msgName");
+			msgHolder.appendChild(msgName);
+			msgTime.innerHTML = timeStamp;
+			msgTime.setAttribute("id","msgTime");
+			msgHolder.appendChild(msgTime);
+			msg.innerHTML = messagePost;
+			msg.setAttribute("id","msg");
+			msgHolder.appendChild(msg);
+
+			var first = chatbox.firstChild;
+			chatbox.insertBefore(msgHolder, first);
+		}
+
+} else {
+		if(last3 === "png" || last3 === "bmp" || last3 === "jpg" || last3 === "gif" || last3 === "peg"){
 			var timeStamp = moment().format('h:mm a');
       var chatbox = document.getElementById("chatbox");
       var textBox = document.getElementById("textBox")
@@ -315,41 +381,42 @@ var chatMessages = function(message_obj){
 
       var first = chatbox.firstChild;
       chatbox.insertBefore(msgHolder, first);
+	} else if (first4 === "http") {
+		var timeStamp = moment().format('h:mm a');
+		var chatbox = document.getElementById("chatbox");
+		var textBox = document.getElementById("textBox")
+		var msgHolder = document.createElement("span");
+		var msgAvatar = document.createElement("img");
+		var msgName = document.createElement("p");
+		var msgTime = document.createElement("p");
+		var msg = document.createElement("p");
+		var userName = document.getElementById("userName");
+		var avatar = document.getElementById("avatar");
+		var color = document.getElementById("color");
+		var a = document.createElement("a");
+
+		msgHolder.setAttribute("id","msgHolder");
+		chatbox.appendChild(msgHolder);
+		msgAvatar.style.backgroundImage = "url('" + url + "')";
+		msgAvatar.setAttribute("id","msgAvatar");
+		msgHolder.appendChild(msgAvatar);
+		msgName.innerHTML = name;
+		msgName.setAttribute("id","msgName");
+		msgHolder.appendChild(msgName);
+		msgTime.innerHTML = timeStamp;
+		msgTime.setAttribute("id","msgTime");
+		msgHolder.appendChild(msgTime);
+		//  msg.innerHTML = message;
+		msg.setAttribute("id","msg");
+		msgHolder.appendChild(msg);
+		a.innerHTML = message;
+		a.setAttribute("href", message);
+		msg.appendChild(a);
+
+		var first = chatbox.firstChild;
+		chatbox.insertBefore(msgHolder, first);
+
 	} else {
-
-	if (message_obj.whisper){
-		messagePost =" Private Message: " + message;
-    var timeStamp = moment().format('h:mm a');
-    var chatbox = document.getElementById("chatbox");
-    var textBox = document.getElementById("textBox")
-    var msgHolder = document.createElement("span");
-    var msgAvatar = document.createElement("img");
-    var msgName = document.createElement("p");
-    var msgTime = document.createElement("p");
-    var msg = document.createElement("p");
-    var userName = document.getElementById("userName");
-    var avatar = document.getElementById("avatar");
-    var color = document.getElementById("color");
-
-     msgHolder.setAttribute("id","msgHolder");
-    chatbox.appendChild(msgHolder);
-     msgAvatar.style.backgroundImage = "url('" + url + "')";
-     msgAvatar.setAttribute("id","msgAvatar");
-    msgHolder.appendChild(msgAvatar);
-     msgName.innerHTML = name;
-     msgName.setAttribute("id","msgName");
-    msgHolder.appendChild(msgName);
-     msgTime.innerHTML = timeStamp;
-     msgTime.setAttribute("id","msgTime");
-    msgHolder.appendChild(msgTime);
-     msg.innerHTML = messagePost;
-     msg.setAttribute("id","msg");
-    msgHolder.appendChild(msg);
-
-    var first = chatbox.firstChild;
-    chatbox.insertBefore(msgHolder, first);
-
-  } else {
     var timeStamp = moment().format('h:mm a');
     var chatbox = document.getElementById("chatbox");
     var textBox = document.getElementById("textBox")
@@ -381,7 +448,6 @@ var chatMessages = function(message_obj){
     var first = chatbox.firstChild;
     chatbox.insertBefore(msgHolder, first);
   }
-  // })
   }
 }
 

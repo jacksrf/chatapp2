@@ -4,7 +4,7 @@ var server = new WSS({port: 3000});
 var userDb = [];
 var userDbObj = userDb;
 var chatHistory = [];
-var banned_words = ["unctious", "dollop"];
+var banned_words = ["unctious", "dollop", "shit", "fuck", "bitch"];
 
 server.on("connection", function(connection){
 	var user = new User(connection);
