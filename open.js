@@ -508,7 +508,7 @@ if (message_obj.whisper) {
 
 
 
-  textBox.addEventListener("keyup", function(evt){
+  textBox.addEventListener("keypress", function(evt){
 	    if (evt.keyCode === 13){
      var send_obj = new buildSendObj("msg", textBox.value, avatar.value);
 
