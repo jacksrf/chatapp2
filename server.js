@@ -12,6 +12,7 @@ server.on("connection", function(connection){
 		var message_obj = JSON.parse(j_message_obj);
 		var message = message_obj.message;
 		var url = message_obj.url;
+		console.log("worked");
 
 		if (!user.bannedWords(user, message, banned_words)){
 			// sets the user names
