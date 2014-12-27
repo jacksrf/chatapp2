@@ -18,6 +18,8 @@ ws.addEventListener("open", function(evt){
 enter.addEventListener("click", function(){
     var login = document.getElementById("container");
     var chat = document.getElementById("chatBody");
+		var menu = document.getElementById("menu");
+		var menuButton = document.getElementById("menuButton");
 
     var avatarHolder = document.getElementById("avatarHolder");
     var avatarPic = document.getElementById("avatarPic");
@@ -58,6 +60,9 @@ enter.addEventListener("click", function(){
 
     login.style.visibility = "hidden";
     chat.style.visibility = "visible";
+
+		menuButton.style.visibility = "visible";
+		menu.appendChild(menuButton);
 
     });
 
@@ -213,7 +218,7 @@ var chatMessages = function(message_obj){
 
 	var split = incomingMessage.split(" ");
 	for (i=0; i<split.length; i++) {
-		if (split[i] === "Sniper" && split[i+1] === "Rifle") {
+		if (split[i] === "Sniper") {
 		 var change = split.splice(i, 1, '︻デ┳═ー');
 		 artMessage = change.join(",");
 		}
