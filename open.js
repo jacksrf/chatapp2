@@ -30,6 +30,7 @@ enter.addEventListener("click", function(){
       avatarPic.style.backgroundImage = "url(htmltag.png)";
       avatarPic.style.backgroundColor = "#05EDFF";
     } else {
+			avatarPic.style.backgroundColor = "white";
       avatarPic.style.backgroundImage = "url('" + avatar.value + "')";
     }
     nameProf.innerHTML = userName.value;
