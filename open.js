@@ -1,4 +1,4 @@
-var ws = new WebSocket("ws://trey.princesspeach.nyc:3000");
+var ws = new WebSocket("ws://104.236.70.216:3000");
 
 var userName = document.getElementById("userName");
 var avatar = document.getElementById("avatar");
@@ -44,7 +44,7 @@ enter.addEventListener("click", function(){
 
     msgTime.innerHTML = timeStamp;
     msgHolder.appendChild(msgTime);
-    msg.innerHTML = "Welcome to the chat " + userName.value + " !";
+    msg.innerText = "Welcome to the chat " + userName.value + " !";
     msgHolder.appendChild(msg);
 
      var send_obj = new buildSendObj("msg", userName.value);
@@ -257,6 +257,7 @@ if (message_obj.whisper) {
 				msgHolder.setAttribute("id","msgHolder");
 				chatbox.appendChild(msgHolder);
 				msgAvatar.style.backgroundImage = "url('" + url + "')";
+				msgAvatar.style.backgroundSize = "cover";
 				msgAvatar.setAttribute("id","msgAvatar");
 				msgHolder.appendChild(msgAvatar);
 				msgName.innerHTML = name;
@@ -298,6 +299,7 @@ if (message_obj.whisper) {
 			msgHolder.setAttribute("id","msgHolder");
 			chatbox.appendChild(msgHolder);
 			msgAvatar.style.backgroundImage = "url('" + url + "')";
+			msgAvatar.style.backgroundSize = "cover";
 			msgAvatar.setAttribute("id","msgAvatar");
 			msgHolder.appendChild(msgAvatar);
 			msgName.innerHTML = name;
@@ -333,17 +335,18 @@ if (message_obj.whisper) {
 
 			msgHolder.setAttribute("id","msgHolder");
 			chatbox.appendChild(msgHolder);
-			msgAvatar.style.backgroundImage = "url('" + url + "')";
-			msgAvatar.setAttribute("id","msgAvatar");
+				msgAvatar.style.backgroundImage = "url('" + url + "')";
+				msgAvatar.style.backgroundSize = "cover";
+				msgAvatar.setAttribute("id","msgAvatar");
 			msgHolder.appendChild(msgAvatar);
-			msgName.innerHTML = name;
-			msgName.setAttribute("id","msgName");
+				msgName.innerHTML = name;
+				msgName.setAttribute("id","msgName");
 			msgHolder.appendChild(msgName);
-			msgTime.innerHTML = timeStamp;
-			msgTime.setAttribute("id","msgTime");
+				msgTime.innerHTML = timeStamp;
+				msgTime.setAttribute("id","msgTime");
 			msgHolder.appendChild(msgTime);
-			msg.innerHTML = messagePost;
-			msg.setAttribute("id","msg");
+				msg.innerHTML = messagePost;
+				msg.setAttribute("id","msg");
 			msgHolder.appendChild(msg);
 
 			var first = chatbox.firstChild;
@@ -368,6 +371,7 @@ if (message_obj.whisper) {
        msgHolder.setAttribute("id","msgHolder");
       chatbox.appendChild(msgHolder);
        msgAvatar.style.backgroundImage = "url('" + url + "')";
+			msgAvatar.style.backgroundSize = "cover";
        msgAvatar.setAttribute("id","msgAvatar");
       msgHolder.appendChild(msgAvatar);
        msgName.innerHTML = name;
@@ -404,6 +408,7 @@ if (message_obj.whisper) {
 		msgHolder.setAttribute("id","msgHolder");
 		chatbox.appendChild(msgHolder);
 		msgAvatar.style.backgroundImage = "url('" + url + "')";
+		msgAvatar.style.backgroundSize = "cover";
 		msgAvatar.setAttribute("id","msgAvatar");
 		msgHolder.appendChild(msgAvatar);
 		msgName.innerHTML = name;
@@ -439,6 +444,7 @@ if (message_obj.whisper) {
      msgHolder.setAttribute("id","msgHolder");
     chatbox.appendChild(msgHolder);
      msgAvatar.style.backgroundImage = "url('" + url + "')";
+		 msgAvatar.style.backgroundSize = "cover";
      msgAvatar.setAttribute("id","msgAvatar");
     msgHolder.appendChild(msgAvatar);
      msgName.innerHTML = name;
